@@ -12,7 +12,7 @@ public class OrderServiceImpl implements OrderService {
     private final DiscountPolicy discountPolicy = new FixdiscountPolicy();
 
     @Override
-    public Order createOrder(Long memberId, String itemname, int itemPrice) {
+    public Order createOrder(Long memberId, String itemName, int itemPrice) {
         //받아온 멤버 아이디로성 메모리에서 멤버 꺼내와 멤버 객체 생성
         Member member = memberRepository.findById(memberId);
         //할인된 가격 반환, discountpolicy에 보내서 vip인지 확인하고 진행
