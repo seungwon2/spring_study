@@ -9,10 +9,12 @@ import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
 
 public class OrderApp {
+
     public static void main(String[] args) {
-        //주문하려면 멤버 생성이 필요하니까 멤버 서비스도 객체로 가져옴
-        MemberService memberService = new MemberServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
+        //AppConfig 이용
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        OrderService orderService = appConfig.orderService();
 
         //null넣기 위해 long에 레퍼런스타입 사용
         long memberId = 1L;
