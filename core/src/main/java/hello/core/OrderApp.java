@@ -7,14 +7,17 @@ import hello.core.member.MemberServiceImpl;
 import hello.core.order.Order;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class OrderApp {
 
     public static void main(String[] args) {
         //AppConfig 이용
-        AppConfig appConfig = new AppConfig();
-        MemberService memberService = appConfig.memberService();
-        OrderService orderService = appConfig.orderService();
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+        OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
+
 
         //null넣기 위해 long에 레퍼런스타입 사용
         long memberId = 1L;
